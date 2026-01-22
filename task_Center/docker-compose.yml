@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./translator  # On pointe vers ton dossier Django
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./translator:/app
+    environment:
+      - DEBUG=1
+      # IMPORTANT : Ajoute l'URL de ton frontend ici pour éviter les erreurs CORS
+      - ALLOWED_HOSTS=localhost,127.0.0.1,backend
+
+  frontend:
+    build: ./frontend    # On pointe vers ton dossier React
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
