@@ -348,3 +348,59 @@ input::placeholder {
   }
 }
 
+/* ==============================================
+   AJOUT POUR VERSION MOBILE (TÉLÉPHONE)
+   Ceci ne modifie pas la version PC
+============================================== */
+
+@media (max-width: 768px) {
+
+  /* 1. On enlève les énormes marges qui écrasent le contenu sur mobile */
+  .app-layout {
+    padding: 10px !important; /* Réduit l'espace autour de l'écran */
+    flex-direction: column;   /* Force l'affichage vertical */
+    gap: 10px;
+  }
+
+  /* 2. On agrandit la carte principale pour qu'elle prenne toute la largeur */
+  .app-container {
+    margin: 0 !important;    /* Enlève la marge de 50px qui posait problème */
+    width: 100% !important;  /* Force la largeur maximale */
+    max-width: 100%;
+    padding: 16px;           /* Réduit l'espace interne pour laisser place au texte */
+    box-sizing: border-box;  /* Empêche le padding de dépasser de l'écran */
+  }
+
+  /* 3. On réduit la taille du gros titre pour qu'il tienne sur une ligne */
+  .header h1 {
+    font-size: 1.8rem;       /* Plus petit que 2.5rem */
+  }
+
+  /* 4. On force les statistiques à rester lisibles (2 par ligne ou 1 par ligne) */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr; /* Force 2 colonnes */
+    gap: 8px;
+  }
+  
+  .stat-card {
+    padding: 10px; /* Moins d'espace vide dans les cartes stats */
+  }
+
+  .stat-value {
+    font-size: 1.5rem; /* Chiffres un peu plus petits */
+  }
+
+  /* 5. On empile les boutons et les inputs proprement */
+  .input-wrapper {
+    grid-template-columns: 1fr; /* Une seule colonne pour les inputs */
+  }
+
+  .add-btn {
+    width: 100%; /* Le bouton prend toute la largeur */
+  }
+
+  /* Cache complètement la déco droite sur mobile pour éviter le scroll horizontal */
+  .visual-right-layer {
+    display: none;
+  }
+}
